@@ -1,0 +1,16 @@
+.main-content {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.left,
+.right,
+.logo-container,
+.navigation-container {
+    display: flex;
+}
+
+.left {
+    width: 30%;
+}
