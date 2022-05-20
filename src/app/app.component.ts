@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { OAuthService } from 'angular-oauth2-oidc';
 import { JwksValidationHandler } from 'angular-oauth2-oidc-jwks';
 import { authCodeFlowConfig } from './auth.config';
@@ -9,12 +9,8 @@ import { authCodeFlowConfig } from './auth.config';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  identityToken: any;
-  _accessToken: string = '';
-
   constructor(private oAuthService: OAuthService) {
     this.configureLoginOptions();
-    
   }
 
   configureLoginOptions(): void {
@@ -30,8 +26,6 @@ export class AppComponent {
 
   get token(): any {
     let claims: any = this.oAuthService.getIdentityClaims();
-    this._accessToken = this.oAuthService.getAccessToken();
-    this.identityToken = claims;
     return claims ? claims : null;
   }
 }

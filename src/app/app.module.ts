@@ -13,7 +13,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    OAuthModule.forRoot(),
+    OAuthModule.forRoot({
+      resourceServer: {
+        allowedUrls: [
+          'https://surerassessmenthttpapihost20220517140636.azurewebsites.net',
+        ],
+        sendAccessToken: true,
+      },
+    }),
     NgbModule,
   ],
   providers: [],
