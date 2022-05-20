@@ -13,13 +13,16 @@ export class HomeComponent implements OnInit {
   constructor(
     private homeService: HomeService,
     private oAuthService: OAuthService
-  ) {}
+  ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   hit() {
     this._accessToken = this.oAuthService.getAccessToken();
-    console.log(this._accessToken);
-    console.log(this.homeService.getEventList(this._accessToken));
+    this.homeService.getEventList(this._accessToken).subscribe(
+      (data) => {
+        console.log(data);
+      }
+    )
   }
 }

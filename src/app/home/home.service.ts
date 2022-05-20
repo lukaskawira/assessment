@@ -10,19 +10,15 @@ import { Events } from '../dto/event';
 export class HomeService {
   constructor(private httpClient: HttpClient) { }
 
-  getEventList(accessToken: string): Observable<Events> {
+  getEventList(accessToken: string): Observable<any> {
+    let events: any;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${accessToken}`,
+      'Authorization': `Bearer ${accessToken}`,
     });
     return this.httpClient
-      .get<Events>(`${environment.endpoint}/api/app/events`, {
+      .get(`${environment.endpoint}/api/app/events`, {
         headers: headers,
-      }).pipe(
-        map((res: Events) => {
-          console.log(res);
-          return res;
-        })
-      );
+      });
   }
 }
