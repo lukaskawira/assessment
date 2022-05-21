@@ -15,7 +15,9 @@ export class HomeComponent implements OnInit {
     private oAuthService: OAuthService
   ) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.hit()
+  }
 
   hit() {
     this._accessToken = this.oAuthService.getAccessToken();

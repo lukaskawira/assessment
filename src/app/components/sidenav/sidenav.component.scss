@@ -1,0 +1,70 @@
+.sidenav {
+  background: #474747;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  height: 100vh;
+  width: 9rem;
+  box-shadow: 0.1rem 0 1.25rem 0 #91b2f0;
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+    padding: 1rem 2rem 0 2rem;
+    width: 100%;
+
+    .logo-text {
+      font-size: 24px;
+      font-weight: 800;
+      color: #e9e9e9;
+      background: none;
+      border: none;
+      cursor: default;
+    }
+  }
+}
+
+.sidenav-nav {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 5rem;
+
+  .sidenav-link {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 1rem;
+
+    .sidenav-link-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      border: none;
+      border-bottom: 1px solid #474747;
+      background: none;
+      font-size: 18px;
+      font-weight: 600;
+      align-items: center;
+      transition: all .35s ease;
+
+      &:hover {
+        border-bottom: 4px solid #4e4e4e;
+        transform: translateY(-2px);
+        color: #e9e9e9;
+      }
+
+      fa-icon {
+        margin-right: 0.4rem;
+        display: flex;
+
+        &:hover {
+          color: #e9e9e9;
+        }
+      }
+    }
+  }
+}

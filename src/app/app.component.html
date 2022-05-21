@@ -1,15 +1,8 @@
 <div *ngIf="token" class="front-end">
-  <div class="main-content">
-    <div class="left">
-      <div class="logo-container">
-        <img src="" alt="">
-      </div>
-      <div class="navigation-container">
-        <button (click)="logout()">LOGOUT</button>
-      </div>
-    </div>
-    <div class="right">
-      <router-outlet></router-outlet>
-    </div>
+  <div class="nav">
+    <app-sidenav></app-sidenav>
+  </div>
+  <div class="content">
+    <router-outlet></router-outlet>
   </div>
 </div>

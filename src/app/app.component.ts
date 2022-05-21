@@ -20,10 +20,6 @@ export class AppComponent {
     this.oAuthService.loadDiscoveryDocumentAndLogin();
   }
 
-  logout(): void {
-    this.oAuthService.revokeTokenAndLogout();
-  }
-
   get token(): any {
     let claims: any = this.oAuthService.getIdentityClaims();
     return claims ? claims : null;
