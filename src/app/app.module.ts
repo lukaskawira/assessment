@@ -10,13 +10,15 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LogoutComponent } from './components/logout/logout.component';
 import { ListComponent } from './components/list/list.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CreateComponent } from './components/create/create.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SidenavComponent,
     LogoutComponent,
-    ListComponent
+    ListComponent,
+    CreateComponent
   ],
   imports: [
     BrowserModule,
