@@ -1,1 +1,56 @@
-<p>list works!</p>
+<div class="content" *ngIf="loadComponent">
+  <form class="search-form">
+    <div class="card">
+      <input id="name" type="text" [formControl]="textSearch" [placeholder]="'Text Search'">
+      <button>SEARCH</button>
+    </div>
+    <div class="card">
+      <input type="checkbox" name="future-event" id="futureEvent">
+      <label for="future-event">Display only upcoming Events (within 3 months).</label>
+    </div>
+  </form>
+  <div class="card">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Date</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of eventList.items">
+          <td>
+            <div>
+              {{item.name}}
+            </div>
+          </td>
+          <td>
+            <div>
+              {{item.dateFrom}} to {{item.dateTo}}
+            </div>
+            <div>
+              {{item.time}}
+            </div>
+          </td>
+          <td>
+            <div>
+              {{item.description}}
+            </div>
+            <div *ngFor="let sub of item.subEvents">
+              <div>
+                {{sub.name}}
+              </div>
+              <div>
+                {{sub.dateFrom}} to {{sub.dateTo}}
+              </div>
+              <div>
+                {{sub.time}}
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

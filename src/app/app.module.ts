@@ -32,6 +32,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     }),
     NgbModule,
     FontAwesomeModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

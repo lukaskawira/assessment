@@ -7,19 +7,21 @@ export interface EventList {
   name: string;
   description: string;
   eventType: number;
-  dateFrom: Date;
-  dateTo: Date;
+  dateFrom: string;
+  dateTo: string;
   time: string;
-  subEvents?: SubEvents[]; // Optional parameter
+  id: string;
+  subEvents: SubEvents[]; // Optional parameter
 }
 
 interface SubEvents {
   name: string;
   description: string;
   eventType: number;
-  dateFrom: Date;
-  dateTo: Date;
+  dateFrom: string;
+  dateTo: string;
   time: string;
+  id: string;
 }
 
 export interface EventError {
