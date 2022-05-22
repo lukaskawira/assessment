@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faRightFromBracket, faFolder } from '@fortawesome/free-solid-svg-icons';
+import { faRightFromBracket, faFolder, faCirclePlus, faList } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-sidenav',
@@ -11,6 +11,8 @@ export class SidenavComponent implements OnInit {
   // ICON VARIABLE
   logoutIcon = faRightFromBracket;
   eventsIcon = faFolder;
+  createIcon = faCirclePlus;
+  listIcon = faList;
 
   constructor() { }
 

@@ -8,20 +8,31 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
+  a {
+    text-decoration: none;
+    color: inherit;
+
+    &:hover,
+    &:visited {
+      color: inherit;
+    }
+  }
+
+  .dropdown-menu {
+    position: relative !important;
+    transform: none !important;
+    min-width: unset !important;
+    padding: 0 !important;
+    background: none !important;
+    color: #000 !important;
+    border: none !important;
+    margin-top: 1rem !important;
+  }
 }
 
 body {
   position: relative;
   font-family: 'Raleway', sans-serif;
   background-color: #e9e9e9;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-
-  &:hover,
-  &:visited {
-    color: inherit;
-  }
 }

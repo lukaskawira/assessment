@@ -5,11 +5,21 @@
         </button>
     </div>
     <div class="sidenav-nav">
-        <div class="sidenav-link">
-            <button class="sidenav-link-btn">
+        <div class="sidenav-link" ngbDropdown>
+            <button class="sidenav-link-btn" ngbDropdownToggle id="dropdown-1">
                 <fa-icon [icon]="eventsIcon"></fa-icon>
                 Events
             </button>
+            <div ngbDropdownMenu aria-labelledby="dropdown-1">
+                <button ngbDropdownItem class="sidenav-link-btn sub-menu">
+                    <fa-icon [icon]="listIcon"></fa-icon>
+                    Events List
+                </button>
+                <button ngbDropdownItem class="sidenav-link-btn sub-menu">
+                    <fa-icon [icon]="createIcon"></fa-icon>
+                    Create New
+                </button>
+            </div>
         </div>
         <div class="sidenav-link">
             <button class="sidenav-link-btn">

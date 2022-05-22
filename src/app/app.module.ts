@@ -4,18 +4,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { OAuthModule } from 'angular-oauth2-oidc';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LogoutComponent } from './components/logout/logout.component';
+import { ListComponent } from './components/list/list.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     SidenavComponent,
-    LogoutComponent
+    LogoutComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +31,7 @@ import { LogoutComponent } from './components/logout/logout.component';
       },
     }),
     NgbModule,
-    FontAwesomeModule
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

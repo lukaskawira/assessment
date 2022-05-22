@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './components/home/home.component';
+import { ListComponent } from './components/list/list.component';
 import { LogoutComponent } from './components/logout/logout.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
+    component: ListComponent,
   },
   {
     path: 'logout',
