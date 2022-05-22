@@ -1,1 +1,51 @@
-<p>create works!</p>
+<div class="content">
+  <form class="create-form" [formGroup]="create" (ngSubmit)="createEvent()">
+    <div class="card">
+      <div class="name-card">
+        <label for="nameInput">Name</label>
+        <input id="nameInput" class="name-input" type="text" formControlName="eventName" placeholder="Event name">
+      </div>
+      <div class="date-from-card">
+        <label for="dateFromInput">Date From</label>
+        <input id="dateFromInput" class="date-from-input" placeholder="Start date" ngbDatepicker #f="ngbDatepicker"
+          formControlName="dateFrom">
+        <button (click)="f.toggle()" type="button">
+          <fa-icon [icon]="dateFromIcon"></fa-icon>
+        </button>
+      </div>
+      <div class="date-to-card">
+        <label for="dateToInput">Date To</label>
+        <input id="dateToInput" class="date-to-input" placeholder="End date" ngbDatepicker #t="ngbDatepicker"
+          formControlName="dateTo">
+        <button (click)="t.toggle()" type="button">
+          <fa-icon [icon]="dateToIcon"></fa-icon>
+        </button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="description-card">
+        <label for="descriptionInput">Description</label>
+        <input id="descriptionInput" class="description-input" type="text" formControlName="description"
+          placeholder="Enter event description">
+      </div>
+      <div class="time-card">
+        <label for="timeInput">Timing</label>
+        <input id="timeInput" class="time-input" type="text" placeholder="Event timing" formControlName="time">
+      </div>
+    </div>
+    <div class="card">
+      <div class="subevent-title-card">
+        <span>Sub Event</span>
+      </div>
+      <div class="subevent-button-card">
+        <button (click)="openSubEventDialog()">Add Sub Event</button>
+      </div>
+    </div>
+    <div class="card">
+
+    </div>
+    <div class="card">
+      <button [disabled]="!create.valid">submit</button>
+    </div>
+  </form>
+</div>

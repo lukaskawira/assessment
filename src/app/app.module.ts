@@ -4,13 +4,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { OAuthModule } from 'angular-oauth2-oidc';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDateAdapter, NgbDateParserFormatter, NgbDatepickerConfig, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LogoutComponent } from './components/logout/logout.component';
 import { ListComponent } from './components/list/list.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateComponent } from './components/create/create.component';
+import { CustomDatePickerConfig } from './components/create/datepicker-config/config';
+import { CustomAdapter, CustomDateParserFormatter } from './components/create/datepicker-config/parser';
+import { SubeventDialogComponent } from './components/create/subevent-dialog/subevent-dialog.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,8 @@ import { CreateComponent } from './components/create/create.component';
     SidenavComponent,
     LogoutComponent,
     ListComponent,
-    CreateComponent
+    CreateComponent,
+    SubeventDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -34,9 +38,14 @@ import { CreateComponent } from './components/create/create.component';
     }),
     NgbModule,
     FontAwesomeModule,
+    FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    { provide: NgbDatepickerConfig, useClass: CustomDatePickerConfig },
+    { provide: NgbDateAdapter, useClass: CustomAdapter },
+    { provide: NgbDateParserFormatter, useClass: CustomDateParserFormatter }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

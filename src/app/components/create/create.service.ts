@@ -6,18 +6,17 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class ListService {
+export class CreateService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getEventList(accessToken: string): Observable<any> {
+  createEvent(accessToken: string, requestBody: any): Observable<any> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${accessToken}`,
     });
-    return this.httpClient
-      .get(`${environment.endpoint}/api/app/events`, {
-        headers: headers,
-      });
+    return this.httpClient.post(`${environment.endpoint}/api/app/events`, {
+      headers: headers,
+    }, requestBody);
   }
 }
