@@ -3,6 +3,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  background: inherit;
+  padding: 0 30px;
 
   .search-form {
     width: 100%;
@@ -10,8 +13,11 @@
 
   .card {
     flex-direction: row;
+    justify-content: center;
     align-items: center;
     margin-top: 14px;
+    background: inherit;
+    border: none;
 
     &:first-child {
       margin-top: 24px;
@@ -19,11 +25,45 @@
   }
 
   table {
+
+    thead {
+      tr {
+        background: #b1907f;
+
+        th {
+          padding: 5px 8px;
+          font-size: 16px;
+          font-weight: 800;
+        }
+      }
+    }
+
     tbody {
       tr {
+        background: #f2d3ba;
+
         td {
           vertical-align: top;
           text-align: left;
+          padding: 5px 8px;
+          font-size: 14px;
+          font-weight: 600;
+
+          .td-description {
+            margin-bottom: 28px;
+          }
+
+          .td-subevents {
+            margin-bottom: 20px;
+
+            &:first-child {
+              margin-bottom: 0;
+            }
+
+            &:last-child {
+              margin-bottom: 0;
+            }
+          }
         }
       }
     }
