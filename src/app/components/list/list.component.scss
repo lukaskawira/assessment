@@ -22,25 +22,57 @@
     &:first-child {
       margin-top: 24px;
     }
+
+    #name,
+    #futureEvent {
+      margin-right: 8px;
+    }
+
+    #btn-search {
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 700;
+      background: #b8b8b8;
+      transition: all 0.35s ease;
+
+      &:hover {
+        background: #109bf8;
+        border: 1px solid #ddd;
+        color: #fff;
+        transform: translateX(3px);
+      }
+    }
   }
 
   table {
+    border: 2px solid #000;
 
     thead {
       tr {
-        background: #b1907f;
+        background: #9b9b9b;
 
         th {
           padding: 5px 8px;
           font-size: 16px;
           font-weight: 800;
+          border-right: 1px solid #7c7c7c;
+
+          &:last-child {
+            border-right: none;
+          }
         }
       }
     }
 
     tbody {
       tr {
-        background: #f2d3ba;
+        &:nth-of-type(odd) {
+          background: #fff;
+        }
+
+        &:nth-of-type(even) {
+          background: #ddd;
+        }
 
         td {
           vertical-align: top;
@@ -48,6 +80,12 @@
           padding: 5px 8px;
           font-size: 14px;
           font-weight: 600;
+          border-right: 1px solid #7c7c7c;
+          border-top: 1px solid #7c7c7c;
+
+          &:last-child {
+            border-right: none;
+          }
 
           .td-description {
             margin-bottom: 28px;
