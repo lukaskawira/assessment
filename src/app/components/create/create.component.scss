@@ -1,0 +1,92 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 8vh 3rem 0 3rem;
+  border: 3px solid #000000;
+
+  .card {
+    border: none;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    padding: 2rem 1.5rem;
+
+    &:first-child {
+      padding-bottom: 1rem;
+    }
+
+    &:last-child {
+      padding-top: 1rem;
+    }
+
+    .title {
+      font-size: 28px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      color: #474747;
+    }
+
+    form {
+      div {
+        .subevent-title-card {
+          display: flex;
+          justify-content: flex-start;
+          font-size: 18px;
+          font-weight: 600;
+        }
+
+        .subevent-button-card {
+          display: flex;
+          justify-content: flex-end;
+        }
+
+        div {
+          display: flex;
+          flex-direction: row;
+        }
+      }
+    }
+  }
+}
+
+.form-control {
+  border: none;
+  border-bottom: 2px solid #000000;
+  background: transparent;
+  transition: all .35s ease;
+  border-radius: 0;
+  padding: 0 0 6px 0;
+
+  &::placeholder {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 400;
+    color: #636363;
+  }
+
+  &:focus {
+    outline: none !important;
+    box-shadow: none;
+    border-bottom: 2px solid #109bf8;
+  }
+}
+
+.date-to-input,
+.date-from-input {
+  padding-right: 30px;
+}
+
+.date-button {
+  margin-left: -25px;
+  border: none;
+  outline: none;
+  background: transparent;
+  transition: all .25s ease;
+
+  &:hover {
+    color: #109bf8;
+  }
+}
