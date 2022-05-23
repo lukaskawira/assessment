@@ -2,7 +2,7 @@ import { NgbDatepickerConfig, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import * as dayjs from 'dayjs';
 
 export class CustomDatePickerConfig extends NgbDatepickerConfig {
-    override firstDayOfWeek = 3;
+    override firstDayOfWeek = 0;
     override minDate: NgbDateStruct = {
         year: dayjs().year(),
         month: dayjs().month() + 1,
