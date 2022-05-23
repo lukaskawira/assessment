@@ -205,3 +205,15 @@ table {
 .border-blue-bottom {
   border-bottom: 2px solid #109bf8;
 }
+
+@media (max-width: 768px) {
+  .form-label {
+    margin-bottom: 0.25rem;
+  }
+
+  .subevent-button-card {
+    button {
+      width: 100%;
+    }
+  }
+}
