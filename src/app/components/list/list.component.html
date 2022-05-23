@@ -50,6 +50,9 @@
             </div>
           </td>
         </tr>
+        <tr *ngIf="noDataFound">
+          <td colspan="3">No Data Found</td>
+        </tr>
       </tbody>
     </table>
   </div>

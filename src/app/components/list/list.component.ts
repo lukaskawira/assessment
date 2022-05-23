@@ -13,6 +13,7 @@ import * as dayjs from 'dayjs'
 export class ListComponent implements OnInit {
   private _accessToken: string = '';
   private _checkFutureEvent: boolean = false;
+  noDataFound: boolean = false;
   loadComponent: boolean = false;
 
   // Search form element
@@ -50,25 +51,28 @@ export class ListComponent implements OnInit {
     this.listService.searchEvent(this._accessToken, name).subscribe(
       (data) => {
         this.eventList = this.formatDate(data);
+        this.eventList.totalCount === 0 ? this.noDataFound = true : this.noDataFound = false;
       }
     )
   }
 
   searchFutureEvent() {
     const name = this.textSearch.value;
+
+    // Construct future date object
     const futureDate = new Date().setMonth(new Date().getMonth() + 3);
     const date = dayjs(futureDate).utc().format();
-    console.log(date);
+
     this.listService.searchFutureEvent(this._accessToken, name, date).subscribe(
       (data) => {
         this.eventList = this.formatDate(data);
+        this.eventList.totalCount === 0 ? this.noDataFound = true : this.noDataFound = false;
       }
     )
   }
 
   futureEventCheck(event: any) {
     this._checkFutureEvent = event.target.checked;
-
   }
 
   formatDate(data: Events): Events {
