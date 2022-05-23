@@ -4,6 +4,8 @@ import { CreateService } from './create.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SubeventDialogComponent } from './subevent-dialog/subevent-dialog.component';
 import { SubEvents } from 'src/app/dto/event';
+import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
+import { Subscription } from 'rxjs';
 
 // icon imports
 import { faCalendarPlus, faCalendarMinus, faTimes } from '@fortawesome/free-solid-svg-icons';
@@ -23,6 +25,9 @@ dayjs.extend(customParseFormat);
 })
 export class CreateComponent implements OnInit {
   private _accessToken: string = '';
+  private breakpointSubscription!: Subscription;
+  breakpointState!: BreakpointState;
+
   loadComponent: boolean = false;
   subEvents: SubEvents[] = [];
 
@@ -42,10 +47,20 @@ export class CreateComponent implements OnInit {
 
   constructor(
     private createService: CreateService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private breakpointObserver: BreakpointObserver
   ) { }
 
   ngOnInit(): void {
+    this.checkForBreakpoint();
+  }
+
+  checkForBreakpoint() {
+    this.breakpointSubscription = this.breakpointObserver
+      .observe(['(max-width: 768px)'])
+      .subscribe((state: BreakpointState) => {
+        this.breakpointState = state;
+      })
   }
 
   createEvent(): void {
@@ -76,11 +91,11 @@ export class CreateComponent implements OnInit {
       }
     }
     console.log(requestBody);
-    // this.createService.createEvent(this._accessToken, requestBody).subscribe(
-    //   (response) => {
-    //     console.log(response);
-    //   }
-    // )
+    this.createService.createEvent(this._accessToken, requestBody).subscribe(
+      (response) => {
+        console.log(response);
+      }
+    )
   }
 
   openSubEventDialog(): void {

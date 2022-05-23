@@ -39,7 +39,7 @@
         <label for="timeInput" class="form-label">Timing</label>
         <input id="timeInput" class="form-control" type="text" placeholder="Event timing" formControlName="time">
       </div>
-      <div class="col-md-6">
+      <div class="col-md-6" *ngIf="!breakpointState.matches">
         <div class="subevent-title-card">
           <span *ngIf="subEvents.length >= 1">Sub Event</span>
         </div>
@@ -47,6 +47,11 @@
       <div class="col-md-6">
         <div class="subevent-button-card">
           <button (click)="openSubEventDialog()">Add Sub Event</button>
+        </div>
+      </div>
+      <div class="col-md-6" *ngIf="breakpointState.matches">
+        <div class="subevent-title-card">
+          <span *ngIf="subEvents.length >= 1">Sub Event</span>
         </div>
       </div>
       <div class="col-md-12" *ngIf="subEvents.length >= 1">
@@ -89,7 +94,7 @@
         </table>
       </div>
       <div class="col-md-12">
-        <button class="btn-submit" [disabled]="!create.valid" type="submit" (click)="createEvent()">submit</button>
+        <button class="btn-submit" [disabled]="!create.valid" type="submit" (click)="createEvent()">Create</button>
       </div>
     </form>
   </div>

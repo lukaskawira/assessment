@@ -63,7 +63,7 @@
           font-weight: 800;
           background: #109bf8;
           color: #ffffff;
-          transition: all .45s ease;
+          transition: all .3s ease;
 
           &:disabled {
             background: #ff6961;
@@ -207,6 +207,10 @@ table {
 }
 
 @media (max-width: 768px) {
+  .content {
+    margin-top: 14vh;
+  }
+
   .form-label {
     margin-bottom: 0.25rem;
   }
@@ -215,5 +219,9 @@ table {
     button {
       width: 100%;
     }
+  }
+
+  .btn-submit {
+    width: 100%;
   }
 }
