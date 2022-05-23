@@ -30,11 +30,21 @@ export class ListComponent implements OnInit {
   }
 
   getEventList() {
+    // INITIALIZE ACCESS TOKEN
     this._accessToken = this.oAuthService.getAccessToken();
     this.listService.getEventList(this._accessToken).subscribe(
       (data) => {
         this.eventList = this.formatDate(data);
         this.loadComponent = true;
+      }
+    )
+  }
+
+  searchEvent() {
+    const name = this.textSearch.value;
+    this.listService.searchEvent(this._accessToken, name).subscribe(
+      (data) => {
+        console.log(data);
       }
     )
   }

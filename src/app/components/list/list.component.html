@@ -2,7 +2,7 @@
   <form class="search-form">
     <div class="card">
       <input id="name" type="text" [formControl]="textSearch" [placeholder]="'Text Search'">
-      <button id="btn-search">SEARCH</button>
+      <button id="btn-search" (click)="searchEvent()">SEARCH</button>
     </div>
     <div class="card">
       <input type="checkbox" name="future-event" id="futureEvent">
