@@ -41,7 +41,7 @@
       </div>
       <div class="col-md-6">
         <div class="subevent-title-card">
-          <span>Sub Event</span>
+          <span *ngIf="subEvents.length >= 1">Sub Event</span>
         </div>
       </div>
       <div class="col-md-6">
@@ -49,8 +49,38 @@
           <button (click)="openSubEventDialog()">Add Sub Event</button>
         </div>
       </div>
-      <div class="col-md-12">
-        --TABLE
+      <div class="col-md-12" *ngIf="subEvents.length >= 1">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Date</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of subEvents">
+              <td>
+                <div>
+                  {{item.name}}
+                </div>
+              </td>
+              <td>
+                <div>
+                  {{formatDateFromModal(item.dateFrom)}} to {{formatDateFromModal(item.dateTo)}}
+                </div>
+                <div>
+                  {{item.time}}
+                </div>
+              </td>
+              <td>
+                <div class="td-description">
+                  {{item.description}}
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
       <div class="col-md-12">
         <button [disabled]="!create.valid" type="submit" (click)="createEvent()">submit</button>

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { OAuthService } from 'angular-oauth2-oidc';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CreateService } from './create.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { SubeventDialogComponent } from './subevent-dialog/subevent-dialog.component';
+import { SubEvents } from 'src/app/dto/event';
 
 // icon imports
 import { faCalendarPlus, faCalendarMinus } from '@fortawesome/free-solid-svg-icons';
@@ -9,9 +11,9 @@ import { faCalendarPlus, faCalendarMinus } from '@fortawesome/free-solid-svg-ico
 // dayjs dependencies
 import * as dayjs from 'dayjs';
 import * as utc from 'dayjs/plugin/utc';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { SubeventDialogComponent } from './subevent-dialog/subevent-dialog.component';
+import * as customParseFormat from 'dayjs/plugin/customParseFormat';
 dayjs.extend(utc);
+dayjs.extend(customParseFormat);
 
 
 @Component({
@@ -22,6 +24,7 @@ dayjs.extend(utc);
 export class CreateComponent implements OnInit {
   private _accessToken: string = '';
   loadComponent: boolean = false;
+  subEvents: SubEvents[] = [];
 
   // Request body form
   create = new FormGroup({
@@ -38,15 +41,13 @@ export class CreateComponent implements OnInit {
 
   constructor(
     private createService: CreateService,
-    private oAuthService: OAuthService,
-    private formBuilder: FormBuilder,
     private modalService: NgbModal
   ) { }
 
   ngOnInit(): void {
   }
 
-  createEvent() {
+  createEvent(): void {
     const nameInput = this.create.controls['eventName'].value;
     const dateFromInput = this.create.controls['dateFrom'].value;
     const dateToInput = this.create.controls['dateTo'].value;
@@ -59,24 +60,38 @@ export class CreateComponent implements OnInit {
       description: descriptionInput,
       time: timeInput,
       eventType: 0, // MAIN EVENT
-      subEvents: [
-        "string"
-      ]
+      subEvents: this.formatSubEvents(this.subEvents)
     }
-    console.log(requestBody);
-  }
-
-  formatDateToUTC(date: any): string {
-    return dayjs(date).utc().format();
+    this.createService.createEvent(this._accessToken, requestBody).subscribe(
+      (response) => {
+        console.log(response);
+      }
+    )
   }
 
   openSubEventDialog(): void {
     const modalRef = this.modalService.open(SubeventDialogComponent);
-    modalRef.result.then((res) => {
-      console.log(res);
+    modalRef.result.then((data) => {
+      data !== undefined ? this.subEvents.push(data) : '';
     }).catch((error) => {
       console.log(error);
     });
+  }
+
+  formatDateToUTC(date: string): string {
+    return dayjs(date, 'DD-M-YYY').utc().format();
+  }
+
+  formatDateFromModal(date: string): string {
+    return dayjs(date, 'DD-M-YYYY').format('DD MMM YYYY');
+  }
+
+  formatSubEvents(data: SubEvents[]): SubEvents[] {
+    for (let i = 0; i < data.length; i++) {
+      data[i].dateFrom = this.formatDateToUTC(data[i].dateFrom);
+      data[i].dateTo = this.formatDateToUTC(data[i].dateTo);
+    }
+    return data;
   }
 
 }

@@ -10,18 +10,18 @@ export interface EventList {
   dateFrom: string;
   dateTo: string;
   time: string;
-  id: string;
+  id?: string;
   subEvents: SubEvents[]; // Optional parameter
 }
 
-interface SubEvents {
+export interface SubEvents {
   name: string;
   description: string;
   eventType: number;
   dateFrom: string;
   dateTo: string;
   time: string;
-  id: string;
+  id?: string;
 }
 
 export interface EventError {

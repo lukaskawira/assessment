@@ -1,1 +1,56 @@
+.content {
+  .modal-body {
+    form {
+      div {
+        div {
+          display: flex;
 
+          button {
+            border: none;
+            background: transparent
+          }
+        }
+      }
+    }
+  }
+}
+
+.form-control {
+  border: none;
+  border-bottom: 2px solid #000000;
+  background: transparent;
+  transition: all .35s ease;
+  border-radius: 0;
+  padding: 0 0 6px 0;
+
+  &::placeholder {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 400;
+    color: #636363;
+  }
+
+  &:focus {
+    outline: none !important;
+    box-shadow: none;
+    border-bottom: 2px solid #109bf8;
+  }
+}
+
+.date-to-input,
+.date-from-input {
+  padding-right: 30px;
+}
+
+.date-button {
+  margin-left: -25px;
+  border: none;
+  outline: none;
+  background: transparent;
+  transition: all .25s ease;
+
+  &:hover {
+    color: #109bf8;
+  }
+}

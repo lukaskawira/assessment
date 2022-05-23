@@ -1,10 +1,46 @@
-<div class="modal-header">
-  <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
-  <button type="button" class="btn-close" aria-label="Close" (click)="close()"></button>
-</div>
-<div class="modal-body">
-  HELLO
-</div>
-<div class="modal-footer">
-  <button type="button" class="btn btn-outline-dark" (click)="close()">Save</button>
+<div class="content">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Add Sub Event</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="close()"></button>
+  </div>
+  <div class="modal-body">
+    <form class="row g-3" [formGroup]="event" autocomplete="off">
+      <div class="col-md-12">
+        <label for="nameInput" class="form-label">Name</label>
+        <input id="nameInput" class="form-control" type="text" formControlName="name" placeholder="Event name">
+      </div>
+      <div class="col-md-6">
+        <label for="dateFromInput" class="form-label">Date From</label>
+        <div>
+          <input id="dateFromInput" class="form-control date-from-input" placeholder="Start date" ngbDatepicker
+            #f="ngbDatepicker" formControlName="dateFrom">
+          <button (click)="f.toggle()" type="button" class="date-button">
+            <fa-icon [icon]="dateFromIcon"></fa-icon>
+          </button>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="dateToInput" class="form-label">Date To</label>
+        <div>
+          <input id="dateToInput" class="form-control date-to-input" placeholder="End date" ngbDatepicker
+            #t="ngbDatepicker" formControlName="dateTo">
+          <button (click)="t.toggle()" type="button" class="date-button">
+            <fa-icon [icon]="dateToIcon"></fa-icon>
+          </button>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <label for="descriptionInput" class="form-label">Description</label>
+        <textarea id="descriptionInput" class="form-control" type="text" formControlName="description"
+          placeholder="Enter event description" rows="3"></textarea>
+      </div>
+      <div class="col-md-4">
+        <label for="timeInput" class="form-label">Timing</label>
+        <input id="timeInput" class="form-control" type="text" placeholder="Event timing" formControlName="time">
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="save()" [disabled]="!event.valid">Add Sub Event</button>
+  </div>
 </div>
