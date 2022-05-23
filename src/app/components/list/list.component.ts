@@ -12,6 +12,7 @@ import * as dayjs from 'dayjs'
 })
 export class ListComponent implements OnInit {
   private _accessToken: string = '';
+  private _checkFutureEvent: boolean = false;
   loadComponent: boolean = false;
 
   // Search form element
@@ -40,6 +41,10 @@ export class ListComponent implements OnInit {
     )
   }
 
+  search() {
+    this._checkFutureEvent ? this.searchFutureEvent() : this.searchEvent();
+  }
+
   searchEvent() {
     const name = this.textSearch.value;
     this.listService.searchEvent(this._accessToken, name).subscribe(
@@ -49,8 +54,21 @@ export class ListComponent implements OnInit {
     )
   }
 
+  searchFutureEvent() {
+    const name = this.textSearch.value;
+    const futureDate = new Date().setMonth(new Date().getMonth() + 3);
+    const date = dayjs(futureDate).utc().format();
+    console.log(date);
+    this.listService.searchFutureEvent(this._accessToken, name, date).subscribe(
+      (data) => {
+        this.eventList = this.formatDate(data);
+      }
+    )
+  }
+
   futureEventCheck(event: any) {
-    console.log(event.target.checked);
+    this._checkFutureEvent = event.target.checked;
+
   }
 
   formatDate(data: Events): Events {

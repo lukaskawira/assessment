@@ -29,8 +29,22 @@ export class ListService {
     return this.httpClient
       .get(`${environment.endpoint}/api/app/events`, {
         params: {
+          name
+        },
+        headers: headers,
+      });
+  }
+
+  searchFutureEvent(accessToken: string, name: string, dateToMax: string): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${accessToken}`,
+    });
+    return this.httpClient
+      .get(`${environment.endpoint}/api/app/events`, {
+        params: {
           name,
-          
+          dateToMax
         },
         headers: headers,
       });
