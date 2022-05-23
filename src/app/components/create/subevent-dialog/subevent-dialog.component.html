@@ -1,6 +1,6 @@
 <div class="content">
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Add Sub Event</h4>
+    <div class="modal-title" id="modal-basic-title">Add Sub Event</div>
     <button type="button" class="btn-close" aria-label="Close" (click)="close()"></button>
   </div>
   <div class="modal-body">
@@ -13,7 +13,7 @@
         <label for="dateFromInput" class="form-label">Date From</label>
         <div>
           <input id="dateFromInput" class="form-control date-from-input" placeholder="Start date" ngbDatepicker
-            #f="ngbDatepicker" formControlName="dateFrom">
+            #f="ngbDatepicker" formControlName="dateFrom" [ngClass]="f.isOpen() ? 'border-blue-bottom' : ''">
           <button (click)="f.toggle()" type="button" class="date-button">
             <fa-icon [icon]="dateFromIcon"></fa-icon>
           </button>
@@ -23,7 +23,7 @@
         <label for="dateToInput" class="form-label">Date To</label>
         <div>
           <input id="dateToInput" class="form-control date-to-input" placeholder="End date" ngbDatepicker
-            #t="ngbDatepicker" formControlName="dateTo">
+            #t="ngbDatepicker" formControlName="dateTo" [ngClass]="t.isOpen() ? 'border-blue-bottom' : ''">
           <button (click)="t.toggle()" type="button" class="date-button">
             <fa-icon [icon]="dateToIcon"></fa-icon>
           </button>

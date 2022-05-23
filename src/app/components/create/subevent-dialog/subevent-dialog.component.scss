@@ -1,5 +1,21 @@
 .content {
+  background: #f7f7f7;
+
+  .modal-header {
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    border-bottom: none;
+
+    .modal-title {
+      font-size: 20px;
+      font-weight: 800;
+    }
+  }
+
   .modal-body {
+    padding: 1.5rem;
+
     form {
       div {
         div {
@@ -12,6 +28,11 @@
         }
       }
     }
+  }
+
+  .modal-footer {
+    padding: .5rem 1.5rem 1.5rem 1.5rem;
+    border-top: none;
   }
 }
 
@@ -48,9 +69,8 @@
   border: none;
   outline: none;
   background: transparent;
-  transition: all .25s ease;
+}
 
-  &:hover {
-    color: #109bf8;
-  }
+.border-blue-bottom {
+  border-bottom: 2px solid #109bf8;
 }
