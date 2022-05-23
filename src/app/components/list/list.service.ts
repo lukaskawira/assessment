@@ -30,6 +30,7 @@ export class ListService {
       .get(`${environment.endpoint}/api/app/events`, {
         params: {
           name,
+          
         },
         headers: headers,
       });

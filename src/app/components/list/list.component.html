@@ -5,7 +5,7 @@
       <button id="btn-search" (click)="searchEvent()">SEARCH</button>
     </div>
     <div class="card">
-      <input type="checkbox" name="future-event" id="futureEvent">
+      <input type="checkbox" name="future-event" id="futureEvent" (change)="futureEventCheck($event)">
       <label for="future-event">Display only upcoming Events (within 3 months).</label>
     </div>
   </form>

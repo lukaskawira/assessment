@@ -44,9 +44,13 @@ export class ListComponent implements OnInit {
     const name = this.textSearch.value;
     this.listService.searchEvent(this._accessToken, name).subscribe(
       (data) => {
-        console.log(data);
+        this.eventList = this.formatDate(data);
       }
     )
+  }
+
+  futureEventCheck(event: any) {
+    console.log(event.target.checked);
   }
 
   formatDate(data: Events): Events {
