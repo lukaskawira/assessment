@@ -53,15 +53,28 @@ export class CreateComponent implements OnInit {
     const dateToInput = this.create.controls['dateTo'].value;
     const descriptionInput = this.create.controls['description'].value;
     const timeInput = this.create.controls['time'].value;
-    const requestBody = {
-      name: nameInput,
-      dateFrom: this.formatDateToUTC(dateFromInput),
-      dateTo: this.formatDateToUTC(dateToInput),
-      description: descriptionInput,
-      time: timeInput,
-      eventType: 0, // MAIN EVENT
-      subEvents: this.formatSubEvents(this.subEvents)
+    let requestBody;
+    if (this.subEvents.length >= 1) {
+      requestBody = {
+        name: nameInput,
+        dateFrom: this.formatDateToUTC(dateFromInput),
+        dateTo: this.formatDateToUTC(dateToInput),
+        description: descriptionInput,
+        time: timeInput,
+        eventType: 0,
+        subEvents: this.formatSubEvents(this.subEvents)
+      }
+    } else {
+      requestBody = {
+        name: nameInput,
+        dateFrom: this.formatDateToUTC(dateFromInput),
+        dateTo: this.formatDateToUTC(dateToInput),
+        description: descriptionInput,
+        time: timeInput,
+        eventType: 0
+      }
     }
+    console.log(requestBody);
     this.createService.createEvent(this._accessToken, requestBody).subscribe(
       (response) => {
         console.log(response);
@@ -79,11 +92,11 @@ export class CreateComponent implements OnInit {
   }
 
   formatDateToUTC(date: string): string {
-    return dayjs(date, 'DD-M-YYY').utc().format();
+    return dayjs(date, 'D-M-YYYY').utc().format();
   }
 
   formatDateFromModal(date: string): string {
-    return dayjs(date, 'DD-M-YYYY').format('DD MMM YYYY');
+    return dayjs(date, 'D-M-YYYY').format('DD MMM YYYY');
   }
 
   formatSubEvents(data: SubEvents[]): SubEvents[] {

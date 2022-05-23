@@ -15,8 +15,8 @@ export class CreateService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${accessToken}`,
     });
-    return this.httpClient.post(`${environment.endpoint}/api/app/events`, {
+    return this.httpClient.post(`${environment.endpoint}/api/app/events`, requestBody, {
       headers: headers,
-    }, requestBody);
+    });
   }
 }
