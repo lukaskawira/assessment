@@ -6,7 +6,7 @@ import { SubeventDialogComponent } from './subevent-dialog/subevent-dialog.compo
 import { SubEvents } from 'src/app/dto/event';
 
 // icon imports
-import { faCalendarPlus, faCalendarMinus } from '@fortawesome/free-solid-svg-icons';
+import { faCalendarPlus, faCalendarMinus, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 // dayjs dependencies
 import * as dayjs from 'dayjs';
@@ -38,6 +38,7 @@ export class CreateComponent implements OnInit {
   // icons
   dateFromIcon = faCalendarPlus;
   dateToIcon = faCalendarMinus;
+  closeIcon = faTimes;
 
   constructor(
     private createService: CreateService,
@@ -62,7 +63,7 @@ export class CreateComponent implements OnInit {
         description: descriptionInput,
         time: timeInput,
         eventType: 0,
-        subEvents: this.formatSubEvents(this.subEvents)
+        subEvents: this.subEvents
       }
     } else {
       requestBody = {
@@ -75,17 +76,17 @@ export class CreateComponent implements OnInit {
       }
     }
     console.log(requestBody);
-    this.createService.createEvent(this._accessToken, requestBody).subscribe(
-      (response) => {
-        console.log(response);
-      }
-    )
+    // this.createService.createEvent(this._accessToken, requestBody).subscribe(
+    //   (response) => {
+    //     console.log(response);
+    //   }
+    // )
   }
 
   openSubEventDialog(): void {
     const modalRef = this.modalService.open(SubeventDialogComponent);
-    modalRef.result.then((data) => {
-      data !== undefined ? this.subEvents.push(data) : '';
+    modalRef.result.then((data: SubEvents) => {
+      data !== undefined ? this.subEvents.push(this.formatSubEvents(data)) : '';
     }).catch((error) => {
       console.log(error);
     });
@@ -95,16 +96,18 @@ export class CreateComponent implements OnInit {
     return dayjs(date, 'D-M-YYYY').utc().format();
   }
 
-  formatDateFromModal(date: string): string {
-    return dayjs(date, 'D-M-YYYY').format('DD MMM YYYY');
+  formatDateFromUTC(date: string): string {
+    return dayjs(date).format('DD MMM YYYY');
   }
 
-  formatSubEvents(data: SubEvents[]): SubEvents[] {
-    for (let i = 0; i < data.length; i++) {
-      data[i].dateFrom = this.formatDateToUTC(data[i].dateFrom);
-      data[i].dateTo = this.formatDateToUTC(data[i].dateTo);
-    }
+  formatSubEvents(data: SubEvents): SubEvents {
+    data.dateFrom = this.formatDateToUTC(data.dateFrom);
+    data.dateTo = this.formatDateToUTC(data.dateTo);
     return data;
+  }
+
+  deleteSubEvent(index: number) {
+    this.subEvents.splice(index, 1);
   }
 
 }

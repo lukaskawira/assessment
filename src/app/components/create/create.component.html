@@ -14,7 +14,7 @@
         <label for="dateFromInput" class="form-label">Date From</label>
         <div>
           <input id="dateFromInput" class="form-control date-from-input" placeholder="Start date" ngbDatepicker
-            #f="ngbDatepicker" formControlName="dateFrom">
+            #f="ngbDatepicker" formControlName="dateFrom" [ngClass]="f.isOpen() ? 'border-blue-bottom' : ''">
           <button (click)="f.toggle()" type="button" class="date-button">
             <fa-icon [icon]="dateFromIcon"></fa-icon>
           </button>
@@ -24,7 +24,7 @@
         <label for="dateToInput" class="form-label">Date To</label>
         <div>
           <input id="dateToInput" class="form-control date-to-input" placeholder="End date" ngbDatepicker
-            #t="ngbDatepicker" formControlName="dateTo">
+            #t="ngbDatepicker" formControlName="dateTo" [ngClass]="t.isOpen() ? 'border-blue-bottom' : ''">
           <button (click)="t.toggle()" type="button" class="date-button">
             <fa-icon [icon]="dateToIcon"></fa-icon>
           </button>
@@ -56,10 +56,11 @@
               <th>Name</th>
               <th>Date</th>
               <th>Description</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let item of subEvents">
+            <tr *ngFor="let item of subEvents; let i = index">
               <td>
                 <div>
                   {{item.name}}
@@ -67,7 +68,7 @@
               </td>
               <td>
                 <div>
-                  {{formatDateFromModal(item.dateFrom)}} to {{formatDateFromModal(item.dateTo)}}
+                  {{formatDateFromUTC(item.dateFrom)}} to {{formatDateFromUTC(item.dateTo)}}
                 </div>
                 <div>
                   {{item.time}}
@@ -78,12 +79,17 @@
                   {{item.description}}
                 </div>
               </td>
+              <td class="btn-del-container">
+                <button class="btn-del" (click)="deleteSubEvent(i)">
+                  <fa-icon [icon]="closeIcon"></fa-icon>
+                </button>
+              </td>
             </tr>
           </tbody>
         </table>
       </div>
       <div class="col-md-12">
-        <button [disabled]="!create.valid" type="submit" (click)="createEvent()">submit</button>
+        <button class="btn-submit" [disabled]="!create.valid" type="submit" (click)="createEvent()">submit</button>
       </div>
     </form>
   </div>

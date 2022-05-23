@@ -40,6 +40,40 @@
         .subevent-button-card {
           display: flex;
           justify-content: flex-end;
+
+          button {
+            border-radius: 8px;
+            padding: 6px 8px;
+            font-size: 15px;
+            font-weight: 700;
+            background: #b8b8b8;
+            transition: all .25s ease;
+
+            &:hover {
+              background: #858585;
+              color: #ffffff;
+            }
+          }
+        }
+
+        .btn-submit {
+          border-radius: 8px;
+          padding: 7px 14px;
+          font-size: 18px;
+          font-weight: 800;
+          background: #109bf8;
+          color: #ffffff;
+          transition: all .45s ease;
+
+          &:disabled {
+            background: #ff6961;
+            color: #e5cccc;
+          }
+
+          &:hover:enabled {
+            transform: translateY(-2px);
+            box-shadow: 0 0.15rem 0.15rem 0 #000000;
+          }
         }
 
         div {
@@ -84,11 +118,6 @@
   border: none;
   outline: none;
   background: transparent;
-  transition: all .25s ease;
-
-  &:hover {
-    color: #109bf8;
-  }
 }
 
 table {
@@ -122,6 +151,11 @@ table {
         background: #ddd;
       }
 
+      .btn-del-container {
+        display: flex;
+        justify-content: center;
+      }
+
       td {
         vertical-align: top;
         text-align: left;
@@ -150,7 +184,24 @@ table {
             margin-bottom: 0;
           }
         }
+
+        .btn-del {
+          width: 27px;
+          height: 27px;
+          border-radius: 15px;
+          background: #d65039;
+          color: #f4f4f4;
+          transition: all .3s ease;
+
+          &:hover {
+            background: red;
+          }
+        }
       }
     }
   }
+}
+
+.border-blue-bottom {
+  border-bottom: 2px solid #109bf8;
 }
