@@ -50,14 +50,19 @@
               </div>
             </div>
           </td>
-          <td class="btn-del-container">
-            <button class="btn-del" (click)="deleteEvent(item.id!)">
-              <fa-icon [icon]="closeIcon"></fa-icon>
-            </button>
+          <td>
+            <div class="btn-container">
+              <button class="btn-del" (click)="deleteEvent(item.id!)">
+                <fa-icon [icon]="closeIcon"></fa-icon>
+              </button>
+              <button class="btn-edit" (click)="editEvent(item.id!)">
+                <fa-icon [icon]="editIcon"></fa-icon>
+              </button>
+            </div>
           </td>
         </tr>
         <tr *ngIf="noDataFound">
-          <td colspan="3">No Data Found</td>
+          <td colspan="4">No Data Found</td>
         </tr>
       </tbody>
     </table>

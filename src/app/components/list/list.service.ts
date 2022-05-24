@@ -56,11 +56,19 @@ export class ListService {
       'Authorization': `Bearer ${accessToken}`,
     });
     return this.httpClient
-      .delete(`${environment.endpoint}/api/app/events${id}`, {
-        params: {
-          id
-        },
-        headers: headers,
+      .delete(`${environment.endpoint}/api/app/events/${id}`, {
+        headers: headers
+      });
+  }
+
+  getEventById(accessToken: string, id: string): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${accessToken}`,
+    });
+    return this.httpClient
+      .get(`${environment.endpoint}/api/app/events/${id}`, {
+        headers: headers
       });
   }
 }

@@ -103,16 +103,41 @@
             }
           }
 
-          .btn-del {
-            width: 27px;
-            height: 27px;
-            border-radius: 15px;
-            background: #d65039;
-            color: #f4f4f4;
-            transition: all .3s ease;
+          .btn-container {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
-            &:hover {
-              background: red;
+            .btn-del {
+              margin: 2px;
+              width: 27px;
+              height: 27px;
+              border-radius: 15px;
+              border: .5px solid #000000;
+              background: #d65039;
+              color: #f4f4f4;
+              transition: all .3s ease;
+
+              &:hover {
+                background: red;
+              }
+            }
+
+            .btn-edit {
+              margin: 2px;
+              width: 27px;
+              height: 27px;
+              border-radius: 15px;
+              border: .5px solid #000000;
+              background: #027524;
+              color: #f4f4f4;
+              transition: all .3s ease;
+
+              &:hover {
+                background: #039e32;
+              }
             }
           }
         }
@@ -131,5 +156,9 @@
         margin-top: 10px;
       }
     }
+  }
+
+  .btn-container {
+    flex-direction: column;
   }
 }

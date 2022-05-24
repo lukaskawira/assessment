@@ -3,11 +3,11 @@ import { FormControl } from '@angular/forms';
 import { OAuthService } from 'angular-oauth2-oidc';
 import { Events } from 'src/app/dto/event';
 import { ListService } from './list.service';
+import Swal from 'sweetalert2';
 import * as dayjs from 'dayjs'
 
 // icon imports
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import Swal from 'sweetalert2';
+import { faTimes, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-list',
@@ -28,6 +28,7 @@ export class ListComponent implements OnInit {
 
   // Icon
   closeIcon = faTimes;
+  editIcon = faPenToSquare;
 
   constructor(
     private listService: ListService,
@@ -107,12 +108,23 @@ export class ListComponent implements OnInit {
     }).then((res) => {
       if (res.isConfirmed) {
         this.listService.deleteEvent(this._accessToken, id).subscribe(
-          (data) => {
-            console.log(data);
+          (res) => {
+            if (res === null) {
+              window.location.reload();
+            } else {
+              console.log(res);
+            }
           }
         )
       }
     })
+  }
 
+  editEvent(id: string): void {
+    this.listService.getEventById(this._accessToken, id).subscribe(
+      (res) => {
+        console.log(res);
+      }
+    )
   }
 }
