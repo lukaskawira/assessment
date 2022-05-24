@@ -49,4 +49,18 @@ export class ListService {
         headers: headers,
       });
   }
+
+  deleteEvent(accessToken: string, id: string): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${accessToken}`,
+    });
+    return this.httpClient
+      .delete(`${environment.endpoint}/api/app/events${id}`, {
+        params: {
+          id
+        },
+        headers: headers,
+      });
+  }
 }

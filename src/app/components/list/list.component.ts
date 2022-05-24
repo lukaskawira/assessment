@@ -5,6 +5,10 @@ import { Events } from 'src/app/dto/event';
 import { ListService } from './list.service';
 import * as dayjs from 'dayjs'
 
+// icon imports
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -21,6 +25,9 @@ export class ListComponent implements OnInit {
 
   // Data variables from service
   eventList!: Events;
+
+  // Icon
+  closeIcon = faTimes;
 
   constructor(
     private listService: ListService,
@@ -87,4 +94,25 @@ export class ListComponent implements OnInit {
     return data;
   }
 
+  deleteEvent(id: string): void {
+    Swal.fire({
+      title: 'Confirm Delete Event',
+      titleText: 'Event will be deleted.',
+      text: 'Are you sure you want to delete this event?',
+      icon: 'warning',
+      showDenyButton: true,
+      showConfirmButton: true,
+      denyButtonText: 'No',
+      confirmButtonText: 'Yes'
+    }).then((res) => {
+      if (res.isConfirmed) {
+        this.listService.deleteEvent(this._accessToken, id).subscribe(
+          (data) => {
+            console.log(data);
+          }
+        )
+      }
+    })
+
+  }
 }

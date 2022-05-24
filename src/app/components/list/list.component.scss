@@ -6,7 +6,7 @@
   align-items: center;
   background: inherit;
   padding: 0 30px;
-  margin-top: 3rem;
+  margin-top: 1rem;
 
   .search-form {
     width: 100%;
@@ -102,7 +102,33 @@
               margin-bottom: 0;
             }
           }
+
+          .btn-del {
+            width: 27px;
+            height: 27px;
+            border-radius: 15px;
+            background: #d65039;
+            color: #f4f4f4;
+            transition: all .3s ease;
+
+            &:hover {
+              background: red;
+            }
+          }
         }
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .content {
+    margin-top: 0;
+    padding: 5px 30px 30px 30px;
+
+    .card {
+      &:first-child {
+        margin-top: 10px;
       }
     }
   }

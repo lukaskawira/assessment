@@ -93,11 +93,11 @@ export class CreateComponent implements OnInit {
         eventType: 0
       }
     }
-    console.log(requestBody);
+    // console.log(requestBody);
     this.createService.createEvent(this._accessToken, requestBody).subscribe(
       (response) => {
         try {
-          console.log(response);
+          // console.log(response);
           if (response.id) {
             Swal.fire({
               title: 'Success!',
@@ -105,15 +105,15 @@ export class CreateComponent implements OnInit {
               text: 'Event has been successfuly created',
               icon: 'success',
             }).then((res) => {
-              console.log(res);
+              // console.log(res);
               this.create.reset();
               this.subEvents = [];
               this.router.navigate(['/']);
             })
           }
-        } catch (e) {
-          console.log(e);
-          console.log(response)
+        } catch (error) {
+          console.log(error);
+          // console.log(response)
         }
       }
     )

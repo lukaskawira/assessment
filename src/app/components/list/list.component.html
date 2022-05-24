@@ -16,6 +16,7 @@
           <th>Name</th>
           <th>Date</th>
           <th>Description</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -48,6 +49,11 @@
                 {{sub.time}}
               </div>
             </div>
+          </td>
+          <td class="btn-del-container">
+            <button class="btn-del" (click)="deleteEvent(item.id!)">
+              <fa-icon [icon]="closeIcon"></fa-icon>
+            </button>
           </td>
         </tr>
         <tr *ngIf="noDataFound">

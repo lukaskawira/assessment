@@ -14,7 +14,7 @@ export class AppComponent {
   }
 
   configureLoginOptions(): void {
-    console.log(authCodeFlowConfig);
+    // console.log(authCodeFlowConfig);
     this.oAuthService.configure(authCodeFlowConfig);
     this.oAuthService.tokenValidationHandler = new JwksValidationHandler();
     this.oAuthService.loadDiscoveryDocumentAndLogin();
