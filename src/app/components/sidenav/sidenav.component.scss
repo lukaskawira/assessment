@@ -137,11 +137,11 @@
 
   .hamburger-menu {
     position: fixed;
-    width: 30vh;
+    width: 14rem;
     height: 100vh;
     background: #474747;
     opacity: 0.5;
-    transform: translateX(11vh);
+    transform: translateX(7rem);
     transition: all .4s ease;
     border: 0;
 
@@ -168,7 +168,7 @@
 }
 
 .hamburger-menu-transform {
-  transform: translateX(-19vh);
+  transform: translateX(-7rem);
   opacity: 1;
-  border-left: 4px solid #1d1d1d;
+  border-left: 2px solid #1d1d1d;
 }
