@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { faRightFromBracket, faFolder, faCirclePlus, faList } from '@fortawesome/free-solid-svg-icons';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { Subscription } from 'rxjs';
@@ -9,6 +9,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent implements OnInit {
+  @ViewChild('hamburger') hamburger: any;
   private breakpointSubscription!: Subscription;
   breakpointState!: BreakpointState;
   openMenu: boolean = false;
@@ -37,6 +38,11 @@ export class SidenavComponent implements OnInit {
 
   toggleHamburgerMenu(): void {
     this.openMenu = !this.openMenu;
+    if (this.hamburger.nativeElement.classList.contains('is-active')) {
+      this.hamburger.nativeElement.classList.remove('is-active');
+    } else {
+      this.hamburger.nativeElement.classList.add('is-active');
+    }
   }
 
 }

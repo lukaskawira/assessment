@@ -14,7 +14,6 @@ import { CreateComponent } from './components/create/create.component';
 import { CustomDatePickerConfig } from './components/create/datepicker-config/config';
 import { CustomAdapter, CustomDateParserFormatter } from './components/create/datepicker-config/parser';
 import { SubeventDialogComponent } from './components/create/subevent-dialog/subevent-dialog.component';
-import { HamburgerToggleDirective } from './components/sidenav/hamburger-directive/hamburger-toggle.directive';
 
 @NgModule({
   declarations: [
@@ -23,8 +22,7 @@ import { HamburgerToggleDirective } from './components/sidenav/hamburger-directi
     LogoutComponent,
     ListComponent,
     CreateComponent,
-    SubeventDialogComponent,
-    HamburgerToggleDirective
+    SubeventDialogComponent
   ],
   imports: [
     BrowserModule,

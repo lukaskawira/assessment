@@ -30,7 +30,7 @@
   </div>
   <div class="sidenav-nav-mobile" *ngIf="breakpointState.matches">
     <div>
-      <button class="hamburger hamburger--elastic" type="button" appHamburgerToggle (click)="toggleHamburgerMenu()">
+      <button class="hamburger hamburger--elastic" type="button" (click)="toggleHamburgerMenu()" #hamburger>
         <span class="hamburger-box">
           <span class="hamburger-inner"></span>
         </span>
