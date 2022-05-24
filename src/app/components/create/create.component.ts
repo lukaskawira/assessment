@@ -14,6 +14,7 @@ import { faCalendarPlus, faCalendarMinus, faTimes } from '@fortawesome/free-soli
 import * as dayjs from 'dayjs';
 import * as utc from 'dayjs/plugin/utc';
 import * as customParseFormat from 'dayjs/plugin/customParseFormat';
+import Swal from 'sweetalert2';
 dayjs.extend(utc);
 dayjs.extend(customParseFormat);
 
@@ -57,7 +58,7 @@ export class CreateComponent implements OnInit {
 
   checkForBreakpoint() {
     this.breakpointSubscription = this.breakpointObserver
-      .observe(['(max-width: 768px)'])
+      .observe(['(max-width: 767px)'])
       .subscribe((state: BreakpointState) => {
         this.breakpointState = state;
       })
@@ -91,11 +92,28 @@ export class CreateComponent implements OnInit {
       }
     }
     console.log(requestBody);
-    this.createService.createEvent(this._accessToken, requestBody).subscribe(
-      (response) => {
-        console.log(response);
-      }
-    )
+    Swal.fire({
+      title: 'Success!',
+      titleText: 'Event created!',
+      text: 'Event has been successfuly created',
+      icon: 'success',
+    }).then((res) => {
+      console.log(res);
+      // window.location.reload();
+    })
+    // this.createService.createEvent(this._accessToken, requestBody).subscribe(
+    //   (response) => {
+    //     try {
+    //       console.log(response);
+    //       if (response.id) {
+
+    //       }
+    //     } catch (e) {
+    //       console.log(e);
+    //       console.log(response)
+    //     }
+    //   }
+    // )
   }
 
   openSubEventDialog(): void {

@@ -29,7 +29,7 @@ export class SidenavComponent implements OnInit {
 
   checkForBreakpoint(): void {
     this.breakpointSubscription = this.breakpointObserver
-      .observe(['(max-width: 768px)'])
+      .observe(['(max-width: 767px)'])
       .subscribe((state: BreakpointState) => {
         this.breakpointState = state;
       })
