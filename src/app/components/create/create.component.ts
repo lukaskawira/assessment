@@ -15,6 +15,7 @@ import * as dayjs from 'dayjs';
 import * as utc from 'dayjs/plugin/utc';
 import * as customParseFormat from 'dayjs/plugin/customParseFormat';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 dayjs.extend(utc);
 dayjs.extend(customParseFormat);
 
@@ -49,7 +50,8 @@ export class CreateComponent implements OnInit {
   constructor(
     private createService: CreateService,
     private modalService: NgbModal,
-    private breakpointObserver: BreakpointObserver
+    private breakpointObserver: BreakpointObserver,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -92,28 +94,29 @@ export class CreateComponent implements OnInit {
       }
     }
     console.log(requestBody);
-    Swal.fire({
-      title: 'Success!',
-      titleText: 'Event created!',
-      text: 'Event has been successfuly created',
-      icon: 'success',
-    }).then((res) => {
-      console.log(res);
-      // window.location.reload();
-    })
-    // this.createService.createEvent(this._accessToken, requestBody).subscribe(
-    //   (response) => {
-    //     try {
-    //       console.log(response);
-    //       if (response.id) {
-
-    //       }
-    //     } catch (e) {
-    //       console.log(e);
-    //       console.log(response)
-    //     }
-    //   }
-    // )
+    this.createService.createEvent(this._accessToken, requestBody).subscribe(
+      (response) => {
+        try {
+          console.log(response);
+          if (response.id) {
+            Swal.fire({
+              title: 'Success!',
+              titleText: 'Event created!',
+              text: 'Event has been successfuly created',
+              icon: 'success',
+            }).then((res) => {
+              console.log(res);
+              this.create.reset();
+              this.subEvents = [];
+              this.router.navigate(['/']);
+            })
+          }
+        } catch (e) {
+          console.log(e);
+          console.log(response)
+        }
+      }
+    )
   }
 
   openSubEventDialog(): void {
