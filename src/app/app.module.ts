@@ -14,6 +14,7 @@ import { CreateComponent } from './components/create/create.component';
 import { CustomDatePickerConfig } from './components/create/datepicker-config/config';
 import { CustomAdapter, CustomDateParserFormatter } from './components/create/datepicker-config/parser';
 import { SubeventDialogComponent } from './components/create/subevent-dialog/subevent-dialog.component';
+import { EditComponent } from './components/edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { SubeventDialogComponent } from './components/create/subevent-dialog/sub
     LogoutComponent,
     ListComponent,
     CreateComponent,
-    SubeventDialogComponent
+    SubeventDialogComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,

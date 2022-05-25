@@ -8,6 +8,7 @@ import * as dayjs from 'dayjs'
 
 // icon imports
 import { faTimes, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list',
@@ -32,7 +33,8 @@ export class ListComponent implements OnInit {
 
   constructor(
     private listService: ListService,
-    private oAuthService: OAuthService
+    private oAuthService: OAuthService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -123,7 +125,15 @@ export class ListComponent implements OnInit {
   editEvent(id: string): void {
     this.listService.getEventById(this._accessToken, id).subscribe(
       (res) => {
-        console.log(res);
+        try {
+          if (res.id !== null) {
+            this.router.navigate(['edit'], {
+              state: res
+            });
+          }
+        } catch (error) {
+          console.log(error);
+        }
       }
     )
   }

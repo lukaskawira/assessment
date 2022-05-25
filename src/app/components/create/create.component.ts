@@ -6,6 +6,8 @@ import { SubeventDialogComponent } from './subevent-dialog/subevent-dialog.compo
 import { SubEvents } from 'src/app/dto/event';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { Subscription } from 'rxjs';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 // icon imports
 import { faCalendarPlus, faCalendarMinus, faTimes } from '@fortawesome/free-solid-svg-icons';
@@ -14,11 +16,8 @@ import { faCalendarPlus, faCalendarMinus, faTimes } from '@fortawesome/free-soli
 import * as dayjs from 'dayjs';
 import * as utc from 'dayjs/plugin/utc';
 import * as customParseFormat from 'dayjs/plugin/customParseFormat';
-import Swal from 'sweetalert2';
-import { Router } from '@angular/router';
 dayjs.extend(utc);
 dayjs.extend(customParseFormat);
-
 
 @Component({
   selector: 'app-create',
