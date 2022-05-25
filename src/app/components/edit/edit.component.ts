@@ -53,7 +53,6 @@ export class EditComponent implements OnInit {
 
   ngOnInit(): void {
     this.checkForBreakpoint();
-    console.log(this.eventData);
   }
 
   checkForBreakpoint(): void {
@@ -109,7 +108,6 @@ export class EditComponent implements OnInit {
       time: timeInput,
       eventType: 0
     }
-    console.log(requestBody);
     this.editService.updateEvent(this._accessToken, id, requestBody).subscribe(
       (response) => {
         try {
@@ -123,7 +121,7 @@ export class EditComponent implements OnInit {
             })
           }
         } catch (error) {
-          console.log(error);
+          console.error(error);
         }
       }
     )

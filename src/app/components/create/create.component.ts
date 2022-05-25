@@ -119,7 +119,7 @@ export class CreateComponent implements OnInit {
     modalRef.result.then((data: SubEvents) => {
       data !== undefined ? this.subEvents.push(this.formatSubEvents(data)) : '';
     }).catch((error) => {
-      console.log(error);
+      console.error(error);
     });
   }
 

@@ -114,7 +114,7 @@ export class ListComponent implements OnInit {
             if (res === null) {
               window.location.reload();
             } else {
-              console.log(res);
+              console.error('error in deleting event');
             }
           }
         )
@@ -133,7 +133,7 @@ export class ListComponent implements OnInit {
             });
           }
         } catch (error) {
-          console.log(error);
+          console.error(error);
         }
       }
     )
