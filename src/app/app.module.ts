@@ -11,9 +11,9 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { ListComponent } from './components/list/list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateComponent } from './components/create/create.component';
-import { CustomDatePickerConfig } from './components/create/datepicker-config/config';
-import { CustomAdapter, CustomDateParserFormatter } from './components/create/datepicker-config/parser';
-import { SubeventDialogComponent } from './components/create/subevent-dialog/subevent-dialog.component';
+import { CustomDatePickerConfig } from '../assets/datepicker-config/config';
+import { CustomAdapter, CustomDateParserFormatter } from '../assets/datepicker-config/parser';
+import { SubeventDialogComponent } from './components/reusable/subevent-dialog/subevent-dialog.component';
 import { EditComponent } from './components/edit/edit.component';
 
 @NgModule({

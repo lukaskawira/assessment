@@ -128,6 +128,7 @@ export class ListComponent implements OnInit {
         try {
           if (res.id !== null) {
             this.router.navigate(['edit'], {
+              skipLocationChange: true,
               state: res
             });
           }

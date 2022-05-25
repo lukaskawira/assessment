@@ -71,4 +71,16 @@ export class ListService {
         headers: headers
       });
   }
+
+  updateEvent(accessToken: string, id: string, requestBody: any): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${accessToken}`,
+    });
+    return this.httpClient
+      .put(`${environment.endpoint}/api/app/events/${id}`, requestBody,
+        {
+          headers: headers
+        });
+  }
 }

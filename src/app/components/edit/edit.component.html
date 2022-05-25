@@ -1,1 +1,51 @@
-<p>edit works!</p>
+<div class="content">
+  <div class="card">
+    <div class="title">
+      <span>Edit Event Details</span>
+    </div>
+  </div>
+  <div class="card">
+    <form class="row g-3" [formGroup]="edit" autocomplete="off">
+      <div class="col-md-12">
+        <label for="nameInput" class="form-label">Name *</label>
+        <input id="nameInput" class="form-control" type="text" formControlName="eventName" placeholder="Event name"
+          #inputname>
+        <div *ngIf="inputname.value.length < 5 && inputname.value.length !== 0" class="error-message">
+          Event name must be more than 5
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="dateFromInput" class="form-label">Date From *</label>
+        <div>
+          <input id="dateFromInput" class="form-control date-from-input" placeholder="Start date" ngbDatepicker
+            #f="ngbDatepicker" formControlName="dateFrom" [ngClass]="f.isOpen() ? 'border-blue-bottom' : ''">
+          <button (click)="f.toggle()" type="button" class="date-button">
+            <fa-icon [icon]="dateFromIcon"></fa-icon>
+          </button>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="dateToInput" class="form-label">Date To *</label>
+        <div>
+          <input id="dateToInput" class="form-control date-to-input" placeholder="End date" ngbDatepicker
+            #t="ngbDatepicker" formControlName="dateTo" [ngClass]="t.isOpen() ? 'border-blue-bottom' : ''">
+          <button (click)="t.toggle()" type="button" class="date-button">
+            <fa-icon [icon]="dateToIcon"></fa-icon>
+          </button>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <label for="descriptionInput" class="form-label">Description *</label>
+        <textarea id="descriptionInput" class="form-control" type="text" formControlName="description"
+          placeholder="Enter event description" rows="2"></textarea>
+      </div>
+      <div class="col-md-4">
+        <label for="timeInput" class="form-label">Event Time (optional)</label>
+        <input id="timeInput" class="form-control" type="text" placeholder="Event timing" formControlName="time">
+      </div>
+      <div class="col-md-12">
+        <button class="btn-submit" [disabled]="!edit.valid" type="submit" (click)="updateEvent()">Update</button>
+      </div>
+    </form>
+  </div>
+</div>

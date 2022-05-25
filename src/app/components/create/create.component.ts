@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CreateService } from './create.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { SubeventDialogComponent } from './subevent-dialog/subevent-dialog.component';
+import { SubeventDialogComponent } from '../reusable/subevent-dialog/subevent-dialog.component';
 import { SubEvents } from 'src/app/dto/event';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { Subscription } from 'rxjs';
@@ -92,27 +92,23 @@ export class CreateComponent implements OnInit {
         eventType: 0
       }
     }
-    // console.log(requestBody);
     this.createService.createEvent(this._accessToken, requestBody).subscribe(
       (response) => {
         try {
-          // console.log(response);
           if (response.id) {
             Swal.fire({
               title: 'Success!',
               titleText: 'Event created!',
-              text: 'Event has been successfuly created',
+              text: 'Event has been successfuly created!',
               icon: 'success',
             }).then((res) => {
-              // console.log(res);
               this.create.reset();
               this.subEvents = [];
               this.router.navigate(['/']);
             })
           }
         } catch (error) {
-          console.log(error);
-          // console.log(response)
+          console.error(error);
         }
       }
     )

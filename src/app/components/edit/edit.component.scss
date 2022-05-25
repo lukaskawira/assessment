@@ -1,0 +1,234 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 8vh 3rem 0 3rem;
+  border: 3px solid #000000;
+
+  .card {
+    border: none;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    padding: 2rem 1.5rem;
+
+    &:first-child {
+      padding-bottom: 1rem;
+    }
+
+    &:last-child {
+      padding-top: 1rem;
+    }
+
+    .title {
+      font-size: 28px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      color: #474747;
+    }
+
+    form {
+      div {
+        .subevent-title-card {
+          display: flex;
+          justify-content: flex-start;
+          font-size: 18px;
+          font-weight: 600;
+        }
+
+        .subevent-button-card {
+          display: flex;
+          justify-content: flex-end;
+
+          button {
+            border-radius: 8px;
+            padding: 6px 8px;
+            font-size: 15px;
+            font-weight: 700;
+            background: #b8b8b8;
+            transition: all .25s ease;
+
+            &:hover {
+              background: #858585;
+              color: #ffffff;
+            }
+          }
+        }
+
+        .btn-submit {
+          border-radius: 8px;
+          padding: 7px 14px;
+          font-size: 18px;
+          font-weight: 800;
+          background: #109bf8;
+          color: #ffffff;
+          transition: all .3s ease;
+
+          &:disabled {
+            background: #ff6961;
+            color: #e5cccc;
+          }
+
+          &:hover:enabled {
+            transform: translateY(-2px);
+            box-shadow: 0 0.15rem 0.15rem 0 #000000;
+          }
+        }
+
+        div {
+          display: flex;
+          flex-direction: row;
+        }
+      }
+    }
+  }
+}
+
+.form-control {
+  border: none;
+  border-bottom: 2px solid #000000;
+  background: transparent;
+  transition: all .35s ease;
+  border-radius: 0;
+  padding: 0 0 6px 0;
+
+  &::placeholder {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 400;
+    color: #636363;
+  }
+
+  &:focus {
+    outline: none !important;
+    box-shadow: none;
+    border-bottom: 2px solid #109bf8;
+  }
+}
+
+.date-to-input,
+.date-from-input {
+  padding-right: 30px;
+}
+
+.date-button {
+  margin-left: -25px;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+table {
+  border: 2px solid #000;
+  width: 100%;
+
+  thead {
+    tr {
+      background: #9b9b9b;
+
+      th {
+        padding: 5px 8px;
+        font-size: 16px;
+        font-weight: 800;
+        border-right: 1px solid #7c7c7c;
+
+        &:last-child {
+          border-right: none;
+        }
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      &:nth-of-type(odd) {
+        background: #fff;
+      }
+
+      &:nth-of-type(even) {
+        background: #ddd;
+      }
+
+      .btn-del-container {
+        display: flex;
+        justify-content: center;
+      }
+
+      td {
+        vertical-align: top;
+        text-align: left;
+        padding: 5px 8px;
+        font-size: 14px;
+        font-weight: 600;
+        border-right: 1px solid #7c7c7c;
+        border-top: 1px solid #7c7c7c;
+
+        &:last-child {
+          border-right: none;
+        }
+
+        .td-description {
+          margin-bottom: 28px;
+        }
+
+        .td-subevents {
+          margin-bottom: 20px;
+
+          &:first-child {
+            margin-bottom: 0;
+          }
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+
+        .btn-del {
+          width: 27px;
+          height: 27px;
+          border-radius: 15px;
+          background: #d65039;
+          color: #f4f4f4;
+          transition: all .3s ease;
+
+          &:hover {
+            background: red;
+          }
+        }
+      }
+    }
+  }
+}
+
+.border-blue-bottom {
+  border-bottom: 2px solid #109bf8;
+}
+
+@media (max-width: 767px) {
+  .content {
+    margin-top: 14vh;
+  }
+
+  .form-label {
+    margin-bottom: 0.25rem;
+  }
+
+  .subevent-button-card {
+    button {
+      width: 100%;
+    }
+  }
+
+  .btn-submit {
+    width: 100%;
+  }
+}
+
+.error-message {
+  margin-top: 2px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #d65039;
+}
